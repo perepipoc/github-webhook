@@ -26,10 +26,15 @@
 		<!-- [PIPELINE] -->
 		<distribution.management.release.id>artifactory-local</distribution.management.release.id>
 		<!-- [PIPELINE] -->
+		<distribution.management.snapshot.url>http://localhost:8081/artifactory/libs-snapshot-local</distribution.management.snapshot.url>
 		<distribution.management.release.url>http://localhost:8081/artifactory/libs-release-local</distribution.management.release.url>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 		<!-- To parse the input JSON in compile time -->
 		<dependency>
 			<groupId>com.toomuchcoding.jsonassert</groupId>
@@ -81,9 +86,9 @@
 			<url>${distribution.management.release.url}</url>
 		</repository>
 		<snapshotRepository>
-			<id>repo.spring.io</id>
+			<id>${distribution.management.release.id}</id>
 			<name>Spring Snapshot Repository</name>
-			<url>https://repo.spring.io/libs-snapshot-local</url>
+			<url>${distribution.management.snapshot.url}</url>
 		</snapshotRepository>
 	</distributionManagement>
 
